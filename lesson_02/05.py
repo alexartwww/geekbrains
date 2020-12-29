@@ -1,3 +1,5 @@
+from common import input_value
+
 task = '''
 Реализовать структуру «Рейтинг», представляющую собой не возрастающий набор натуральных чисел.
 У пользователя необходимо запрашивать новый элемент рейтинга. Если в рейтинге существуют
@@ -13,4 +15,13 @@ task = '''
 
 if __name__ == '__main__':
     print(task)
-    
+
+    raiting = [7, 5, 3, 3, 2]
+
+    while True:
+        raiting.sort(reverse = True)
+        print('Raiting = ', raiting)
+        num = input_value('Input number or 0 - to exit: ', '^[0-9]+$', int)
+        if num == 0:
+            break
+        raiting.append(num)

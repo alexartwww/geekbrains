@@ -1,3 +1,5 @@
+from common import input_value
+
 task = '''
 * Реализовать структуру данных «Товары». Она должна представлять собой список кортежей.
 Каждый кортеж хранит информацию об отдельном товаре. В кортеже должно быть
@@ -25,4 +27,33 @@ task = '''
 
 if __name__ == '__main__':
     print(task)
-    
+
+    db = [
+        (1, {"название": "компьютер", "цена": 20000, "количество": 5, "eд": "шт."}),
+        (2, {"название": "принтер", "цена": 6000, "количество": 2, "eд": "шт."}),
+        (3, {"название": "сканер", "цена": 2000, "количество": 7, "eд": "шт."})
+    ]
+
+    articul = 999
+    while True:
+        articul = input_value('Input articul or 0 to stop: ', '^[0-9]+$', int)
+        if articul == 0:
+            break
+
+        name = input_value('Input name: ', '^.+$', str)
+        price = input_value('Input price: ', '^[0-9]+$', int)
+        num = input_value('Input num: ', '^[0-9]+$', int)
+        unit = input_value('Input unit: ', '^.+$', str)
+
+        item = (articul, {"название": name, "цена": price, "количество": num, "eд": unit})
+        db.append(item)
+
+
+    print('Analytics: ')
+    analytics = {
+        "название": list(set([item[1]["название"] for item in db])),
+        "цена": list(set([item[1]["цена"] for item in db])),
+        "количество": list(set([item[1]["количество"] for item in db])),
+        "eд": list(set([item[1]["eд"] for item in db]))
+    }
+    print(analytics)
