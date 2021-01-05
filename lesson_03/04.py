@@ -22,6 +22,9 @@ def my_func(x, y):
             result = result * var
         return result
 
+    if y == 0:
+        return 1
+
     return prod([x if y > 0 else 1 / x for _ in range(abs(y))])
 
 
