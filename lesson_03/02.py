@@ -13,7 +13,7 @@ def print_user_info(name, last_name, year_of_birth, city_of_living, email, phone
 if __name__ == '__main__':
     print(task)
     print_user_info(name='Artem',
-                    last_name='Alekashkin',
+                    last_name='Aleksashkin',
                     year_of_birth=1986,
                     city_of_living='Moscow',
                     email='artem@aleksashkin.com',
