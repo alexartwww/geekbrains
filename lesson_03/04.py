@@ -11,5 +11,23 @@ task = '''
 предусматривающая использование цикла.
 '''
 
+
+def my_func(x, y):
+    ''' second variant '''
+
+    def prod(vars):
+        ''' there is not build-in function like sum :('''
+        result = 1
+        for var in vars:
+            result = result * var
+        return result
+
+    return prod([x if y > 0 else 1 / x for _ in range(abs(y))])
+
+
 if __name__ == '__main__':
     print(task)
+
+    x = input_value('Input x: ', '^\-?[0-9]+(\.[0-9]+)?$', float)
+    y = input_value('Input y: ', '^\-?[0-9]+$', int)
+    print(my_func(x, y))
