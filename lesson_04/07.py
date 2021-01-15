@@ -9,5 +9,17 @@ task = '''
 Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
 '''
 
+def fact(n):
+    i = 0
+    while i < n:
+        i += 1
+        result = 1
+        for k in range(i):
+            result = result * (k + 1)
+        yield result
+
 if __name__ == '__main__':
     print(task)
+
+    for el in fact(10):
+        print(el)

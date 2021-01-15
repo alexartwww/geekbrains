@@ -6,3 +6,7 @@ task = '''
 
 if __name__ == '__main__':
     print(task)
+
+    result_list = [i for i in range(20, 240) if i % 20 == 0 or i % 21 == 0]
+
+    print(result_list)
