@@ -10,5 +10,5 @@ task = '''
 if __name__ == '__main__':
     print(task)
 
-    result = reduce(lambda x, y: x+y, [i for i in range(100, 1001, 2)])
+    result = reduce(lambda x, y: x*y, [i for i in range(100, 1001, 2)])
     print(result)
