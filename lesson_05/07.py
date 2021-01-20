@@ -33,7 +33,7 @@ if __name__ == '__main__':
                 if name not in firms:
                     firms[name] = revenue - spend
                 else:
-                    firms[name] += firms[name] + (revenue - spend)
+                    firms[name] += (revenue - spend)
         profit_list = [firms[name] for name in firms if firms[name] > 0]
         result = [firms, {"average_profit": sum(profit_list) / len(profit_list)}]
         print(json.dumps(result))
