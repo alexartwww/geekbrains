@@ -1,3 +1,5 @@
+import json
+
 task = '''
 Создать (не программно) текстовый файл, в котором каждая строка должна содержать данные
 о фирме: название, форма собственности, выручка, издержки.
@@ -18,3 +20,24 @@ task = '''
 
 if __name__ == '__main__':
     print(task)
+    firms = {}
+    result = {}
+    try:
+        with open('07.file.txt', 'r') as f:
+            for line in f:
+                line_sep = line.split()
+                name = line_sep[0]
+                form = line_sep[1]
+                revenue = int(line_sep[2])
+                spend = int(line_sep[3])
+                if name not in firms:
+                    firms[name] = revenue - spend
+                else:
+                    firms[name] += firms[name] + (revenue - spend)
+        profit_list = [firms[name] for name in firms if firms[name] > 0]
+        result = [firms, {"average_profit": sum(profit_list) / len(profit_list)}]
+        print(json.dumps(result))
+        with open('07.file.out.json', 'w') as f:
+            json.dump(result, f)
+    except IOError as err:
+        print(f'Ошибка {err}!')

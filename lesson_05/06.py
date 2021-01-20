@@ -17,3 +17,17 @@ task = '''
 
 if __name__ == '__main__':
     print(task)
+
+    result = {}
+    try:
+        with open('06.file.txt', 'r') as f:
+            for line in f:
+                line_sep = line.split(':')
+                cource = line_sep[0]
+                nums = line_sep[1]
+                numbers = ''.join([symbol for symbol in nums if (ord(symbol) >= 48 and ord(symbol) <= 57) or ord(symbol) == 32]).strip()
+                result[cource] = sum([int(num) for num in numbers.split()])
+    except IOError as err:
+        print(f'Ошибка {err}!')
+
+    print(result)
