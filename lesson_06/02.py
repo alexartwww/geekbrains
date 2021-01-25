@@ -9,6 +9,19 @@ length (длина), width (ширина). Значения данных атр�
 Например: 20м * 5000м * 25кг * 5см = 12500 т
 '''
 
+
+class Road:
+
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+
+    def calculate_mass(self, thickness):
+        return self._length * self._width * thickness * 25
+
+
 if __name__ == '__main__':
     print(task)
 
+    road = Road(5000, 20)
+    print('Mass = ', road.calculate_mass(5))
