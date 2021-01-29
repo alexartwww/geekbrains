@@ -36,9 +36,50 @@ task = '''
 '''
 
 
-class Cell():
-    pass
+class Cell:
+    def __init__(self, number):
+        self.number = number
+
+    def __add__(self, other):
+        new_cell = Cell(0)
+        new_cell.number = self.number + other.number
+        return new_cell
+
+    def __sub__(self, other):
+        if self.number - other.number <= 0:
+            print('Negative is not allowed')
+            return self
+        new_cell = Cell(0)
+        new_cell.number = self.number - other.number
+        return new_cell
+
+    def __mul__(self, other):
+        new_cell = Cell(0)
+        new_cell.number = self.number * other.number
+        return new_cell
+
+    def __truediv__(self, other):
+        new_cell = Cell(0)
+        new_cell.number = self.number // other.number
+        return new_cell
+
+    def make_order(self):
+        return '\n'.join(['*'*5 for _ in range(self.number//5)] + (['*'*(self.number % 5)] if self.number % 5 > 0 else []))
 
 
 if __name__ == '__main__':
     print(task)
+
+    a = Cell(20)
+    print('Cell =')
+    print(a.make_order())
+
+    b = Cell(2)
+    print('Sum =')
+    print((a+b).make_order())
+    print('Sub =')
+    print((a-b).make_order())
+    print('Mul =')
+    print((a*b).make_order())
+    print('Div =')
+    print((a/b).make_order())

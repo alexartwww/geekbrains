@@ -87,3 +87,4 @@ if __name__ == '__main__':
 
     print('A + B =')
     print(a + b)
+    print(a)
