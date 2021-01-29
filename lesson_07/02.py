@@ -14,5 +14,47 @@ task = '''
 проверить на практике работу декоратора @property.
 '''
 
+
+class Clothes:
+    @property
+    def need_material(self):
+        return 0
+
+
+class Costume(Clothes):
+    def __init__(self, v):
+        self.v = v
+
+    @property
+    def need_material(self):
+        return (self.v / 6.5 + 0.5)
+
+
+class Coat(Clothes):
+    def __init__(self, h):
+        self.h = h
+
+    @property
+    def need_material(self):
+        return (2 * self.h + 0.3)
+
+
 if __name__ == '__main__':
     print(task)
+
+    objects = [
+        231,
+        22,
+        Coat(32),
+        'test',
+        True,
+        Costume(87),
+        Coat(32)
+    ]
+
+    need_material = 0
+    for obj in objects:
+        if isinstance(obj, Clothes):
+            need_material += obj.need_material
+
+    print(need_material)
