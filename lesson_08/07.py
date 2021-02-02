@@ -38,7 +38,14 @@ class Complex:
         return new_coplex
 
     def __str__(self):
-        return str(self.real) + ' + ' + str(self.img) + 'i'
+        if self.real == 0 and self.img == 0:
+            return '0'
+        elif self.real == 0:
+            return str(self.img) + 'i'
+        elif self.img == 0:
+            return str(self.real)
+        else:
+            return str(self.real) + ' + ' + str(self.img) + 'i'
 
 
 if __name__ == '__main__':
