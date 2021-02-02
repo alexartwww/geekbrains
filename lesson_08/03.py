@@ -1,3 +1,6 @@
+from common import input_value
+import re
+
 task = '''
 Создайте собственный класс-исключение, который должен проверять содержимое
 списка на наличие только чисел. Проверить работу исключения на реальном примере.
@@ -17,5 +20,29 @@ task = '''
 сообщение. При этом работа скрипта не должна завершаться.
 '''
 
+
+class NonIntListError(Exception):
+    def __str__(self):
+        return 'NonIntListError: please add only numbers value!'
+
+
+class ExtraList(list):
+    def append(self, value):
+        if not re.search('^[0-9]+$', value):
+            raise NonIntListError
+        super().append(value)
+
+
 if __name__ == '__main__':
     print(task)
+
+    values = ExtraList()
+    while True:
+        try:
+            value = input_value('Input value: ', '^.*$', str)
+            if value == 'stop':
+                print(values)
+                break
+            values.append(value)
+        except NonIntListError as e:
+            print(e)
