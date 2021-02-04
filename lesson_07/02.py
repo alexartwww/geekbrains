@@ -18,7 +18,7 @@ task = '''
 class Clothes:
     @property
     def need_material(self):
-        return 0
+        raise NotImplementedError("Необходимо переопределить метод")
 
 
 class Costume(Clothes):
